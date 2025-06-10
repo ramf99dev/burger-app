@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Fredoka', sans-serif;
+  background-color: #D8006B;
+  color: white;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.login-logo {
+  max-width: 180px;
+  margin-bottom: 20px;
+}
+
+.login-box {
+  background-color: white;
+  color: #D8006B;
+  border-radius: 25px;
+  padding: 40px 30px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.login-box h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.login-box h2 span {
+  color: #00C896;
+  text-decoration: underline;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 25px;
+  overflow: hidden;
+  /* Esto evita que los íconos se salgan del marco */
+}
+
+
+.input-group input {
+  width: 100%;
+  padding: 12px 50px 12px 15px;
+  /* Espacio para el ícono */
+  font-size: 16px;
+  border: 2px solid #D8006B;
+  border-radius: 10px;
+  outline: none;
+  color: #D8006B;
+}
+
+.input-group input::placeholder {
+  color: #888;
+}
+
+.input-group ion-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #D8006B;
+}
+
+.btn-login {
+  background-color: #FFDA1A;
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 12px;
+  border: none;
+  border-radius: 40px;
+  width: 100%;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.btn-login:hover {
+  transform: scale(1.05);
+}
+
+.forgot-password {
+  text-align: center;
+  margin: 15px 0;
+  color: #D8006B;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-register {
+  background-color: white;
+  color: #D8006B;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 12px;
+  border: 2px solid #D8006B;
+  border-radius: 40px;
+  width: 100%;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-register:hover {
+  background-color: #D8006B;
+  color: white;
+}
+
+@media (max-width: 480px) {
+  .login-box {
+    padding: 30px 20px;
+  }
+
+  .login-box h2 {
+    font-size: 22px;
+  }
+}
+
+.message {
+  text-align: start;
+  background-color: #fdecea;
+  color: #b8004c;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}

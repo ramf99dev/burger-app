@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+    display: none !important;
+}
+
+input[type="checkbox"]:checked:enabled:focus,
+input[type="checkbox"]:checked,
+input[type="checkbox"]:hover {
+    background-color: oklch(59.2% 0.249 0.584);
+}
