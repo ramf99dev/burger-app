@@ -9,59 +9,59 @@
                 </a>
             </div>
         @endif
-        <x-search-bar ruta="reserva"></x-search-bar>
+        <x-search-bar ruta="domicilio"></x-search-bar>
     </div>
 
     <div class="mt-3 grid w-full grid-cols-1 gap-4 text-wrap md:grid-cols-2">
-        @foreach ($reservas as $reserva)
+        @foreach ($domicilio as $domicilio)
             <div class="space-y-3 rounded-lg bg-white p-4 shadow">
                 <div class="flex items-baseline space-x-2 text-xl">
                     <div class="flex flex-col space-y-2">
                         <div class="flex flex-row items-center space-x-2">
-                            @if ($reserva->estado === 'pendiente')
+                            @if ($domicilio->estado === 'pendiente')
                                 <div
                                     class="rounded-lg bg-yellow-200 bg-opacity-50 p-1.5 text-lg font-medium uppercase tracking-wider text-yellow-800">
-                                    {{ $reserva->estado }}
+                                    {{ $domicilio->estado }}
                                 </div>
-                            @elseif ($reserva->estado === 'completada')
+                            @elseif ($domicilio->estado === 'completada')
                                 <div
                                     class="rounded-lg bg-green-200 bg-opacity-50 p-1.5 text-lg font-medium uppercase tracking-wider text-green-800">
-                                    {{ $reserva->estado }}
+                                    {{ $domicilio->estado }}
                                 </div>
                             @endif
                             <div>
-                                <h2>#{{ $reserva->id }}</h2>
+                                <h2>#{{ $domicilio->id }}</h2>
                             </div>
 
                         </div>
                         <div class="flex h-fit flex-row text-xs text-gray-400">
-                            Reservado por:
-                            {{ $reserva->nombre }}
+                            Pedido por:
+                            {{ $domicilio->nombre }}
                         </div>
                         <div class="overflow-y-auto text-wrap text-xs text-gray-500">
                             <p>
                                 Para el día:
-                                {{ $reserva->fecha }}.
+                                {{ $domicilio->fecha }}.
                             </p>
                             <p>
                                 A las:
-                                {{ $reserva->hora }}
+                                {{ $domicilio->hora }}
                             </p>
                         </div>
 
                         <div class="overflow-y-auto text-wrap text-xs text-gray-500">
                             <p>
                                 Numero de personas:
-                                {{ $reserva->numero_personas }}.
+                                {{ $domicilio->numero_personas }}.
                             </p>
                             <p>
                                 En la zona:
-                                {{ $reserva->zona->nombre }}
+                                {{ $domicilio->zona->nombre }}
                             </p>
                         </div>
 
                         <div class="overflow-y-auto text-wrap text-xs text-gray-500">
-                            @if ($reserva->orden)
+                            @if ($domicilio->orden)
                                 <p>Orden tentativa: Si</p>
                             @else
                                 <p>Orden tentativa: No</p>
@@ -72,13 +72,13 @@
                 </div>
                 <div class="flex place-content-between place-items-center">
                     <div class="mb-1 text-xl font-medium text-black">
-                        {{-- {{ $reserva->total }}$ --}}
+                        {{-- {{ $domicilio->total }}$ --}}
                     </div>
                     <div class="justify-center">
-                        <a class="inline-block" href="{{ route('reserva.show', $reserva) }}"><img class="h-4"
+                        <a class="inline-block" href="{{ route('domicilio.show', $domicilio) }}"><img class="h-4"
                                 src="/images/nav-icons/detalles.svg" alt=""></a>
                         @if (Auth::user()->permiso === 0)
-                            <form class="inline-block" action="{{ route('reserva.destroy', $reserva) }}"
+                            <form class="inline-block" action="{{ route('domicilio.destroy', $domicilio) }}"
                                 method="POST">
                                 @csrf
                                 @method('DELETE')
@@ -92,7 +92,7 @@
             </div>
         @endforeach
         <div class="mt-6">
-            {{ $reservas->links('vendor.pagination.simple-tailwind') }}
+            {{ $domicilio->links('vendor.pagination.simple-tailwind') }}
         </div>
     </div>
 

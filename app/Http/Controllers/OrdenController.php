@@ -6,7 +6,7 @@ use App\Models\Categoria;
 use App\Models\Orden;
 use App\Models\OrdenProducto;
 use App\Models\Producto;
-use App\Models\Reserva;
+use App\Models\Domicilio;
 use DB;
 use Illuminate\Http\Request;
 
@@ -29,21 +29,21 @@ class OrdenController extends Controller
      */
     public function create(Request $request)
     {
-        if (auth()->user()->permiso == 2 && !$request->has('reserva_id')) {
+        if (auth()->user()->permiso == 2 && !$request->has('domicilio_id')) {
             abort(403, 'Acceso denegado.');
         }
 
-        $reserva = null;
-        if ($request->has('reserva_id')) {
-            $reserva = Reserva::findOrFail($request->reserva_id);
+        $domicilio = null;
+        if ($request->has('domicilio_id')) {
+            $domicilio = Domicilio::findOrFail($request->domicilio_id);
 
-            if (auth()->user()->permiso == 2 && $reserva->user_id != auth()->id()) {
-                abort(403, 'Reservacion Invalida.');
+            if (auth()->user()->permiso == 2 && $domicilio->user_id != auth()->id()) {
+                abort(403, 'Domicilio Invalido.');
             }
         }
 
         $categorias = Categoria::with('productos')->get();
-        return view('orden.create', compact('categorias', 'reserva'));
+        return view('orden.create', compact('categorias', 'domicilio'));
     }
 
     /**
@@ -56,7 +56,7 @@ class OrdenController extends Controller
             'productos.*.id' => 'required|exists:productos,id',
             'productos.*.cantidad' => 'required|integer|min:0',
             'productos.*.precio' => 'required|numeric|min:0',
-            'reserva_id' => 'sometimes|exists:reservas,id'
+            'domicilio_id' => 'sometimes|exists:domicilio,id'
         ]);
 
         $productos = array_filter($request->productos, function ($producto) {
@@ -94,16 +94,16 @@ class OrdenController extends Controller
 
             $orden->update(['total' => $total]);
 
-            if ($request->has('reserva_id')) {
-                $reserva = Reserva::find($request->reserva_id);
-                $reserva->update(['orden_id' => $orden->id]);
+            if ($request->has('domicilio_id')) {
+                $domicilio = Domicilio::find($request->domicilio_id);
+                $domicilio->update(['orden_id' => $orden->id]);
             }
 
 
             DB::commit();
 
-            if ($request->has('reserva_id')) {
-                return redirect()->route('reserva.show', ['reserva' => $request->reserva_id])
+            if ($request->has('domicilio_id')) {
+                return redirect()->route('domicilio.show', ['domicilio' => $request->domicilio_id])
                     ->with('success', 'Orden creada exitosamente!');
             }
 

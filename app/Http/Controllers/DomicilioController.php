@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
-use App\Models\Reserva;
+use App\Models\Domicilio;
 use App\Models\Zona;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
 
-class ReservaController extends Controller
+class DomicilioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,14 +17,14 @@ class ReservaController extends Controller
     public function index()
     {
         if (auth()->user()->permiso == 0 || auth()->user()->permiso == 1) {
-            $reservas = Reserva::with(['user', 'orden', 'zona'])
+            $domicilio = Domicilio::with(['user', 'orden', 'zona'])
                 ->oldest()
                 ->paginate(10);
         } else {
-            $reservas = Reserva::where('user_id', auth()->id())->oldest()->paginate(10);
+            $domicilio = Domicilio::where('user_id', auth()->id())->oldest()->paginate(10);
         }
 
-        return view('reserva.index', compact('reservas'));
+        return view('domicilio.index', compact('domicilio'));
     }
 
     /**
@@ -33,7 +33,7 @@ class ReservaController extends Controller
     public function create()
     {
         $zonas = Zona::query()->orderBy('id', 'desc')->simplePaginate(100);
-        return view('reserva.create', ['zonas' => $zonas]);
+        return view('domicilio.create', ['zonas' => $zonas]);
     }
 
     /**
@@ -52,7 +52,7 @@ class ReservaController extends Controller
 
         DB::beginTransaction();
         try {
-            $reserva = Reserva::create([
+            $domicilio = Domicilio::create([
                 'nombre' => $request->nombre,
                 'numero_personas' => $request->numero_personas,
                 'fecha' => Carbon::parse($request->fecha),
@@ -64,25 +64,25 @@ class ReservaController extends Controller
 
             if ($request->has('orden') && $request->orden) {
                 DB::commit();
-                return redirect()->route('orden.create', ['reserva_id' => $reserva->id]);
+                return redirect()->route('orden.create', ['domicilio_id' => $domicilio->id]);
             }
 
             DB::commit();
-            return redirect()->route('reserva.show', ['reserva' => $reserva->id]);
+            return redirect()->route('domicilio.show', ['domicilio' => $domicilio->id]);
         } catch (\Exception $e) {
             DB::rollBack();
-            return back()->with('error', 'Error al crear la reserva: ' . $e->getMessage());
+            return back()->with('error', 'Error al crear el pedido: ' . $e->getMessage());
         }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Reserva $reserva)
+    public function show(Domicilio $domicilio)
     {
-        $reserva->load(['user', 'orden', 'zona']);
+        $domicilio->load(['user', 'orden', 'zona']);
 
-        return view('reserva.show', compact('reserva'));
+        return view('domicilio.show', compact('domicilio'));
     }
 
     /**
@@ -104,16 +104,16 @@ class ReservaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Reserva $reserva)
+    public function destroy(Domicilio $domicilio)
     {
-        DB::transaction(function () use ($reserva) {
-            if ($reserva->orden) {
-                $reserva->orden->delete();
+        DB::transaction(function () use ($domicilio) {
+            if ($domicilio->orden) {
+                $domicilio->orden->delete();
             }
 
-            $reserva->delete();
+            $domicilio->delete();
         });
 
-        return redirect()->route('reserva.index');
+        return redirect()->route('domicilio.index');
     }
 }

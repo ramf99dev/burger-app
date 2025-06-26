@@ -31,8 +31,8 @@ class Orden extends Model
             ->withPivot(['cantidad', 'precio_producto', 'subtotal']);
     }
 
-    public function reserva()
+    public function domicilio()
     {
-        return $this->hasOne(Reserva::class);
+        return $this->hasOne(Domicilio::class);
     }
 }

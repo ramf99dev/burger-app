@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Reserva;
+use App\Models\Domicilio;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,10 +24,10 @@ class CheckPermission
 
         if ($userPermission == 2) {
             $allowedClientRoutes = [
-                'reserva.index',
-                'reserva.create',
-                'reserva.store',
-                'reserva.show',
+                'domicilio.index',
+                'domicilio.create',
+                'domicilio.store',
+                'domicilio.show',
                 'orden.create',
                 'orden.store'
             ];
@@ -36,12 +36,12 @@ class CheckPermission
 
 
             if (in_array($routeName, $allowedClientRoutes)) {
-                if ($routeName === 'reserva.show') {
-                    $reservaId = $request->route()->parameter('reserva')->id;
+                if ($routeName === 'domicilio.show') {
+                    $domicilioId = $request->route()->parameter('domicilio')->id;
 
 
-                    $reserva = Reserva::findOrFail($reservaId);
-                    if ($reserva->user_id !== $user->id) {
+                    $domicilio = Domicilio::findOrFail($domicilioId);
+                    if ($domicilio->user_id !== $user->id) {
                         abort(403, 'Acceso denegado.');
                     }
                 }

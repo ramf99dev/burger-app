@@ -4,7 +4,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\OrdenController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\DomicilioController;
 use App\Http\Controllers\UsuarioAdminController;
 use App\Http\Controllers\ZonaController;
 use Illuminate\Support\Facades\Route;
@@ -37,7 +37,7 @@ Route::middleware(['auth', 'permission:0'])->group(function () {
 Route::middleware(['auth', 'permission:1'])->group(function () {
     Route::resource('producto', ProductoController::class);
     Route::resource('orden', OrdenController::class);
-    Route::resource('reserva', ReservaController::class);
+    Route::resource('domicilio', DomicilioController::class);
 });
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

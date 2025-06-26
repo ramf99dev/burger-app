@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Reservas') }}</title>
+        <title>{{ config('app.name', 'Dimicilio') }}</title>
 
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -18,10 +18,10 @@
 
     <body class="flex place-content-center bg-pink-600">
         <div class="my-3 w-fit gap-4 space-y-3 place-self-center self-center rounded-lg bg-white p-4 shadow md:w-96">
-            <form action="{{ route('reserva.store') }}" method="POST" class="text-pink-600">
+            <form action="{{ route('domicilio.store') }}" method="POST" class="text-pink-600">
                 @csrf
                 <div class="mb-3">
-                    <h2 class="text-center text-4xl font-black">Reservación Particular</h2>
+                    <h2 class="text-center text-4xl font-black">Domicilio Particular</h2>
                 </div>
                 <div class="flex flex-col gap-2">
                     <div class="flex flex-col gap-1">
@@ -99,7 +99,7 @@
                     <button
                         class="relative my-1.5 flex w-fit cursor-pointer items-center rounded-lg bg-gradient-to-tr from-yellow-400 to-yellow-400 px-3 py-2 font-medium text-white shadow transition-colors hover:scale-110">
                         <img src="/images/nav-icons/agregar.svg" alt="" class="h-6">
-                        <span class="w52 ml-3 overflow-hidden transition-all">Reservar</span>
+                        <span class="w52 ml-3 overflow-hidden transition-all">Domicilio</span>
                     </button>
                 </div>
             </form>

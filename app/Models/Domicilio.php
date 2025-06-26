@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Reserva extends Model
+class Domicilio extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,7 +12,7 @@ class Reserva extends Model
      * @var array
      */
     protected $fillable = [
-        'nombre',
+        'persona',
         'numero_personas',
         'fecha',
         'hora',
@@ -27,7 +27,7 @@ class Reserva extends Model
     }
 
     /**
-     * Get the user who made the reservation.
+     * Get the user who made the delivery.
      */
     public function user()
     {
