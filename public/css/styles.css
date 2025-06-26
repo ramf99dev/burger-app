@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: 'Fredoka', sans-serif;
-    background-color: #D8006B;
+    background-color: #080a80;
     color: white;
 }
 
@@ -390,7 +390,6 @@ h2 span {
     }
 }
 
-.float {}
 
 .float button,
 input[type="submit"],

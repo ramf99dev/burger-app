@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'name' => 'Moka',
+    'name' => 'Burger',
     'manifest' => [
-        'name' => env('APP_NAME', 'Moka APP'),
+        'name' => env('APP_NAME', 'Burger APP'),
         'short_name' => 'PWA',
         'start_url' => '/',
         'background_color' => '#db2777',

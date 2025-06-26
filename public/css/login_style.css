@@ -5,7 +5,7 @@
 body {
   margin: 0;
   font-family: 'Fredoka', sans-serif;
-  background-color: #D8006B;
+  background-color: #080a80;
   color: white;
 }
 
@@ -25,7 +25,7 @@ body {
 
 .login-box {
   background-color: white;
-  color: #D8006B;
+  color: #080a80;
   border-radius: 25px;
   padding: 40px 30px;
   max-width: 400px;
@@ -40,7 +40,7 @@ body {
 }
 
 .login-box h2 span {
-  color: #00C896;
+  color: #080a80;
   text-decoration: underline;
 }
 
@@ -57,10 +57,10 @@ body {
   padding: 12px 50px 12px 15px;
   /* Espacio para el ícono */
   font-size: 16px;
-  border: 2px solid #D8006B;
+  border: 2px solid #080a80;
   border-radius: 10px;
   outline: none;
-  color: #D8006B;
+  color: #080a80;
 }
 
 .input-group input::placeholder {
@@ -73,12 +73,12 @@ body {
   top: 50%;
   transform: translateY(-50%);
   font-size: 20px;
-  color: #D8006B;
+  color: #080a80;
 }
 
 .btn-login {
-  background-color: #FFDA1A;
-  color: #000;
+  background-color: #b50808;
+  color: #dddddd;
   font-weight: bold;
   font-size: 16px;
   padding: 12px;
@@ -97,18 +97,18 @@ body {
 .forgot-password {
   text-align: center;
   margin: 15px 0;
-  color: #D8006B;
+  color: #080a80;
   font-size: 14px;
   cursor: pointer;
 }
 
 .btn-register {
   background-color: white;
-  color: #D8006B;
+  color: #080a80;
   font-weight: bold;
   font-size: 16px;
   padding: 12px;
-  border: 2px solid #D8006B;
+  border: 2px solid #080a80;
   border-radius: 40px;
   width: 100%;
   margin-top: 10px;
@@ -117,7 +117,7 @@ body {
 }
 
 .btn-register:hover {
-  background-color: #D8006B;
+  background-color: #080a80;
   color: white;
 }
 
@@ -134,7 +134,7 @@ body {
 .message {
   text-align: start;
   background-color: #fdecea;
-  color: #b8004c;
+  color: #080a80;
   padding: 10px;
   border-radius: 10px;
   margin-top: 10px;

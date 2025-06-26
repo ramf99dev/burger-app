@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: 'Fredoka', sans-serif;
-    background-color: #D8006B;
+    background-color: #080a80;
     color: white;
 }
 
@@ -21,7 +21,7 @@ body {
 
 .register-box {
     background-color: white;
-    color: #D8006B;
+    color: #080a80;
     border-radius: 25px;
     padding: 30px;
     max-width: 420px;
@@ -37,7 +37,7 @@ body {
 
 .back-link {
     display: inline-block;
-    color: #D8006B;
+    color: #080a80;
     text-decoration: none;
     margin-bottom: 15px;
     font-size: 14px;
@@ -62,7 +62,7 @@ body {
     width: 100%;
     padding: 10px 15px;
     font-size: 14px;
-    border: 2px solid #D8006B;
+    border: 2px solid #080a80;
     border-radius: 10px;
     outline: none;
     box-sizing: border-box;
@@ -89,7 +89,7 @@ body {
 .message {
     text-align: start;
     background-color: #fdecea;
-    color: #b8004c;
+    color: #080a80;
     padding: 10px;
     border-radius: 10px;
     margin-top: 10px;
